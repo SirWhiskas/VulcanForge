@@ -1,10 +1,10 @@
 namespace VulcanForge.Models
 {
-    public class Resource
+    public class Asset
     {
         public long Id { get; set; }
-        public long resourceTypeId { get; set; }
+        public long resourceId { get; set; }
         public string Name { get; set; }
-        public long worldId { get; set; }
+        public string Description { get; set; }
     }
 }

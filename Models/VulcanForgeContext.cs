@@ -17,5 +17,7 @@ namespace VulcanForge.Models
         public DbSet<VulcanForge.Models.ResourceType> ResourceType { get; set; }
 
         public DbSet<VulcanForge.Models.Resource> Resource { get; set; }
+
+        public DbSet<VulcanForge.Models.Asset> Asset { get; set; }
     }
 }
