@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VulcanForge.Models;
+using VulcanForge.Repository;
 
 namespace VulcanForge.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WorldsController : ControllerBase
+    public class WorldsController : BaseController<World, WorldRepository>
     {
         private readonly VulcanForgeContext _context;
 
-        public WorldsController(VulcanForgeContext context)
+        public WorldsController(WorldRepository worldRepository) : base (worldRepository)
         {
-            _context = context;
         }
 
         // GET: api/Worlds
