@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using VulcanForge.Models;
+using VulcanForge.Data;
+using MySql.Data.MySqlClient;
 
 namespace VulcanForge
 {
@@ -20,8 +22,11 @@ namespace VulcanForge
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<VulcanForgeContext>(opt => opt.UseInMemoryDatabase("VulcanForge"));
+            //services.AddDbContext<VulcanForgeContext>(opt => opt.UseInMemoryDatabase("VulcanForge"));
+            //services.AddTransient<VulcanForgeContext>(_ => new VulcanForgeContext(Configuration.GetConnectionString("Default"));
+            services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
             services.AddControllers();
+            services.AddScoped<IVulcanForgeRepo, MockVulcanForgeRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

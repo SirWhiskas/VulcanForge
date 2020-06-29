@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using VulcanForge.Models;
 
-namespace VulcanForge.Models
+namespace VulcanForge.Data
 {
     public class VulcanForgeContext : DbContext
     {
+        private string v;
+
         public VulcanForgeContext(DbContextOptions<VulcanForgeContext> options)
             : base(options)
         {

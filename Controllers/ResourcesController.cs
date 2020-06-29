@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VulcanForge.Models;
+using VulcanForge.Data;
+
 
 namespace VulcanForge.Controllers
 {
