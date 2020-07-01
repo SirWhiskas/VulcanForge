@@ -22,9 +22,10 @@ namespace VulcanForge
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<VulcanForgeContext>(opt => opt.UseInMemoryDatabase("VulcanForge"));
+            //services.AddDbContext<VulcanForgeContext>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
             //services.AddTransient<VulcanForgeContext>(_ => new VulcanForgeContext(Configuration.GetConnectionString("Default"));
-            services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
+            //services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
+            services.AddDbContextPool<VulcanForgeContext>(opt => opt.UseMySql(Configuration.GetConnectionString("Default")));
             services.AddControllers();
             services.AddScoped<IVulcanForgeRepo, MockVulcanForgeRepo>();
         }
