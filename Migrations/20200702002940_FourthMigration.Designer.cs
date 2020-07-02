@@ -8,8 +8,8 @@ using VulcanForge.Data;
 namespace VulcanForge.Migrations
 {
     [DbContext(typeof(VulcanForgeContext))]
-    [Migration("20200630133245_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200702002940_FourthMigration")]
+    partial class FourthMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,7 @@ namespace VulcanForge.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Secret")
@@ -65,6 +66,7 @@ namespace VulcanForge.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<long>("resourceTypeId")
@@ -85,6 +87,7 @@ namespace VulcanForge.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
@@ -102,7 +105,9 @@ namespace VulcanForge.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(140) CHARACTER SET utf8mb4")
+                        .HasMaxLength(140);
 
                     b.HasKey("Id");
 

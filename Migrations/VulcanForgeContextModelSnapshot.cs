@@ -43,6 +43,7 @@ namespace VulcanForge.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Secret")
@@ -63,6 +64,7 @@ namespace VulcanForge.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<long>("resourceTypeId")
@@ -83,6 +85,7 @@ namespace VulcanForge.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
@@ -100,7 +103,9 @@ namespace VulcanForge.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasColumnType("varchar(140) CHARACTER SET utf8mb4")
+                        .HasMaxLength(140);
 
                     b.HasKey("Id");
 
