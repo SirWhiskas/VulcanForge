@@ -45,26 +45,22 @@ namespace VulcanForge.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCampaignSetting(long id, CampaignSettingDTO CampaignSettingDTO)
+        public async Task<IActionResult> PutCampaignSetting(CampaignSettingDTO CampaignSettingDTO)
         {
-            if (id != CampaignSettingDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var CampaignSetting = await _context.CampaignSetting.FindAsync(id);
+            var CampaignSetting = await _context.CampaignSetting.FindAsync(CampaignSettingDTO.Id);
             if (CampaignSetting == null)
             {
                 return NotFound();
             }
 
             CampaignSetting.Name = CampaignSettingDTO.Name;
+            CampaignSetting.WorldId = CampaignSetting.WorldId;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException) when (!CampaignSettingExists(id))
+            catch (DbUpdateConcurrencyException) when (!CampaignSettingExists(CampaignSettingDTO.Id))
             {
                 return NotFound();
             }
