@@ -53,8 +53,7 @@ namespace VulcanForge.Controllers
                 return NotFound();
             }
 
-            CampaignSetting.Name = CampaignSettingDTO.Name;
-            CampaignSetting.WorldId = CampaignSetting.WorldId;
+            CampaignSetting.UpdateWithDTO(CampaignSettingDTO);
 
             try
             {
